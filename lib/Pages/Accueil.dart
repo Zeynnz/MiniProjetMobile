@@ -1,3 +1,4 @@
+import 'package:GameStar/Pages/Ajout.dart';
 import 'package:GameStar/Pages/Apropos.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,9 @@ class Accueil extends StatelessWidget {
           },
         ),
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.add))
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Ajout()));
+          }, icon: Icon(Icons.add))
         ],//actions
       )
     );
