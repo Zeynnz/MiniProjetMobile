@@ -1,4 +1,4 @@
-import 'package:GameStar/Apropos.dart';
+import 'package:GameStar/Pages/Accueil.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,30 +10,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        leading: PopupMenuButton<int>(
-          icon:Icon(Icons.menu),
-          itemBuilder: (context) => [
-            PopupMenuItem(
-              value: 1,
-              child: Text('A propos'),
-            ),
-            PopupMenuItem(
-                value: 2,
-                child: Text("Je sais aps encore"))
-          ],
-          onSelected: (value) {
-            if(value == 1){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Apropos()),);
-            }
-          },
+    return MaterialApp(
+      title: 'Game Star',//j'ai pas d'idée donc c'est temporaire
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.teal,
         ),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.add))
-        ],//actions
-      )
+        scaffoldBackgroundColor: Colors.white10,
+      ),
+      home: const Accueil(),
     );
   }
 }
+
