@@ -4,7 +4,7 @@
   "erreurSave": "Error while saving :",
   "erreurAjout": "Error while adding the game.",
   "nom": "name",
-  "note": "note",
+  "note": "grade",
   "termine": "finished?",
   "ajout": "game successfully added",
   "titreAjout": "Game addition",
@@ -12,5 +12,7 @@
   "nomJeu": "Name of the game",
   "nomJeuHint": "Enter the name of the game",
   "noteJeu": "Grade",
-  "noteJeuHint": "Between 0 and 20"
+  "noteJeuHint": "Between 0 and 20",
+  "oui": "yes",
+  "non": "no"
 }

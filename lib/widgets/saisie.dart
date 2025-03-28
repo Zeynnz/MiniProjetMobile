@@ -48,7 +48,7 @@ class saisie extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: ListTile(
-                    title: const Text('Oui'),
+                    title: Text(AppLocalizations.of(context)!.oui),
                     leading: Radio<bool>(
                       value: true,
                       groupValue: ended,
@@ -58,7 +58,7 @@ class saisie extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListTile(
-                    title: const Text('Non'),
+                    title: Text(AppLocalizations.of(context)!.non),
                     leading: Radio<bool>(
                       value: false,
                       groupValue: ended,
