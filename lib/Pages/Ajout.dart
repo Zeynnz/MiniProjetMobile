@@ -3,6 +3,7 @@ import 'package:GameStar/widgets/saisie.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:csv/csv.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 
 class Ajout extends StatefulWidget {
@@ -21,7 +22,7 @@ class _AjoutState extends State<Ajout> {
 
     if (name.isEmpty || note == null || _fini == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Veuillez remplir tous les champs.")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.erreurSnack)),
       );
       return;
     }
@@ -40,7 +41,7 @@ class _AjoutState extends State<Ajout> {
         lignes.addAll(existingRows);
       } else {
         // Ajouter l'en-tête seulement si le fichier n'existe pas encore
-        lignes.add(['Nom', 'Note', 'Terminé']);
+        lignes.add([AppLocalizations.of(context)!.nom, AppLocalizations.of(context)!.note, AppLocalizations.of(context)!.termine]);
       }
 
       // Ajouter la nouvelle ligne
@@ -52,7 +53,7 @@ class _AjoutState extends State<Ajout> {
 
       // Afficher un message de succès
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Jeu ajouté avec succès !")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.ajout)),
       );
 
       // Réinitialiser les champs
@@ -62,9 +63,9 @@ class _AjoutState extends State<Ajout> {
         _fini = null;
       });
     } catch (e) {
-      print("Erreur lors de la sauvegarde : $e");
+      print("${AppLocalizations.of(context)!.erreurSave}$e");
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Erreur lors de l'ajout du jeu.")),
+        SnackBar(content: Text(AppLocalizations.of(context)!.erreurAjout)),
       );
     }
   }
@@ -72,7 +73,7 @@ class _AjoutState extends State<Ajout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Ajout de jeux")),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.titreAjout)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -93,9 +94,9 @@ class _AjoutState extends State<Ajout> {
                 minimumSize: const Size(double.infinity, 50),
               ),
               onPressed: ajouterJeu,
-              child: const Text(
-                'Ajouter',
-                style: TextStyle(fontSize: 20.0),
+              child: Text(
+                AppLocalizations.of(context)!.texteAjout,
+                style: const TextStyle(fontSize: 20.0),
               ),
             ),
           ],

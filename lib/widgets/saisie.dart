@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class saisie extends StatelessWidget {
   final TextEditingController poidsController;
@@ -26,20 +27,20 @@ class saisie extends StatelessWidget {
             TextField(
               controller: poidsController,
               keyboardType: TextInputType.text,
-              decoration: const InputDecoration(
-                labelText: 'Nom du jeu',
-                hintText: 'Entrez le nom du jeu',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.nomJeu,
+                hintText: AppLocalizations.of(context)!.nomJeuHint,
+                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: tailleController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Note',
-                hintText: 'Entre 0 et 20',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.noteJeu,
+                hintText: AppLocalizations.of(context)!.noteJeuHint,
+                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),

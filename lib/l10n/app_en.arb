@@ -1,3 +1,16 @@
 {
-  "aboutUs": "AboutUs"
+  "aboutUs": "About Us",
+  "erreurSnack": "Please fill all the input",
+  "erreurSave": "Error while saving :",
+  "erreurAjout": "Error while adding the game.",
+  "nom": "name",
+  "note": "note",
+  "termine": "finished?",
+  "ajout": "game successfully added",
+  "titreAjout": "Game addition",
+  "texteAjout": "Add",
+  "nomJeu": "Name of the game",
+  "nomJeuHint": "Enter the name of the game",
+  "noteJeu": "Grade",
+  "noteJeuHint": "Between 0 and 20"
 }
