@@ -9,12 +9,25 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        leading: PopupMenuButton<int>(
+          icon:Icon(Icons.menu),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 1,
+              child: Text('A propos'),
+            ),
+            PopupMenuItem(
+                value: 2,
+                child: Text("Je sais aps encore"))
+          ],
         ),
-      ),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.add))
+        ],//actions
+      )
     );
   }
 }
