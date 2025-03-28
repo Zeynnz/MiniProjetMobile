@@ -1,5 +1,7 @@
 import 'package:GameStar/Pages/Accueil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,16 +13,25 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Game Star',//j'ai pas d'idée donc c'est temporaire
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.teal,
+        title: 'Game Star',//j'ai pas d'idée donc c'est temporaire
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.teal,
+          ),
+          scaffoldBackgroundColor: Colors.white10,
         ),
-        scaffoldBackgroundColor: Colors.white10,
-      ),
-      home: const Accueil(),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('fr')
+      ],
+      home: const Accueil()
     );
   }
 }
-
