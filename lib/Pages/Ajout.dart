@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:csv/csv.dart';
 
-
 class Ajout extends StatefulWidget {
   @override
   _AjoutState createState() => _AjoutState();
@@ -73,7 +72,7 @@ class _AjoutState extends State<Ajout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Ajout de jeux")),
-      body: Padding(
+      body: Center(child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -100,7 +99,7 @@ class _AjoutState extends State<Ajout> {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }
