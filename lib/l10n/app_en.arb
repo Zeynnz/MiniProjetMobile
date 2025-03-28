@@ -12,5 +12,6 @@
   "nomJeu": "Name of the game",
   "nomJeuHint": "Enter the name of the game",
   "noteJeu": "Grade",
-  "noteJeuHint": "Between 0 and 20"
+  "noteJeuHint": "Between 0 and 20",
+  "labeltermine": "Clear ?"
 }

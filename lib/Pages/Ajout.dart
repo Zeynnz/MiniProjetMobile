@@ -62,6 +62,8 @@ class _AjoutState extends State<Ajout> {
         _noteController.clear();
         _fini = null;
       });
+
+      Navigator.pop(context,true);
     } catch (e) {
       print("${AppLocalizations.of(context)!.erreurSave}$e");
       ScaffoldMessenger.of(context).showSnackBar(

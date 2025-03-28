@@ -44,11 +44,19 @@ class saisie extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
+            Text( AppLocalizations.of(context)!.labeltermine,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 18,
+              ),),
             Row(
               children: <Widget>[
                 Expanded(
                   child: ListTile(
-                    title: const Text('Oui'),
+                    title: const Text(
+                      'Oui',
+                      style: TextStyle(fontSize: 18),
+                    ),
                     leading: Radio<bool>(
                       value: true,
                       groupValue: ended,
@@ -58,7 +66,10 @@ class saisie extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListTile(
-                    title: const Text('Non'),
+                    title: const Text(
+                      'Non',
+                      style: TextStyle(fontSize: 18),
+                    ),
                     leading: Radio<bool>(
                       value: false,
                       groupValue: ended,
