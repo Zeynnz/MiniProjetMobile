@@ -1,6 +1,27 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:csv/csv.dart';
+
+
 
 class Ajout extends StatelessWidget{
+
+
+
+  Future<void> AjouterJeu(String name, double note, bool fini) async {
+    try {
+      // Récupérer le répertoire où stocker le fichier
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/jeux.csv';
+      final file = File(filePath);
+
+
+    } catch (e) {
+      print("Erreur lors de la sauvegarde du fichier : $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
