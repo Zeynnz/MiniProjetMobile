@@ -1,6 +1,7 @@
 import 'package:GameStar/Pages/Ajout.dart';
 import 'package:GameStar/Pages/Apropos.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class Accueil extends StatelessWidget {
   const Accueil({super.key});
@@ -16,7 +17,7 @@ class Accueil extends StatelessWidget {
           itemBuilder: (context) => [
             PopupMenuItem(
               value: 1,
-              child: Text('A propos'),
+              child: Text(AppLocalizations.of(context)!.aboutUs),
             ),
             PopupMenuItem(
                 value: 2,
