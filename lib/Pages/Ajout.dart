@@ -74,7 +74,7 @@ class _AjoutState extends State<Ajout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.titreAjout)),
-      body: Padding(
+      body: Center(child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -101,7 +101,7 @@ class _AjoutState extends State<Ajout> {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }
