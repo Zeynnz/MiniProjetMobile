@@ -13,5 +13,7 @@
   "nomJeuHint": "Enter le nom du jeu",
   "noteJeu": "Note",
   "noteJeuHint": "Entre 0 et 20",
+  "oui": "oui",
+  "non": "non",
   "labeltermine": "Terminé ?"
 }
