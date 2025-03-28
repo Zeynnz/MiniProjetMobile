@@ -1,3 +1,4 @@
+import 'package:GameStar/Apropos.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,6 +24,11 @@ class MainApp extends StatelessWidget {
                 value: 2,
                 child: Text("Je sais aps encore"))
           ],
+          onSelected: (value) {
+            if(value == 1){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Apropos()),);
+            }
+          },
         ),
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.add))
