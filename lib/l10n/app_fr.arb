@@ -1,6 +1,7 @@
 {
   "aboutUs": "A Propos",
   "erreurSnack": "Veuillez remplir tous les champs.",
+  "erreurNote": "La note n'est pas entre 0 et 20",
   "erreurSave": "Erreur lors de la sauvegarde :",
   "erreurAjout": "Erreur lors de l'ajout du jeu.",
   "nom": "nom",

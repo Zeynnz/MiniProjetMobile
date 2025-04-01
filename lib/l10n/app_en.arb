@@ -1,6 +1,7 @@
 {
   "aboutUs": "About Us",
   "erreurSnack": "Please fill all the input",
+  "erreurNote": "The grade is not between 0 and 20",
   "erreurSave": "Error while saving :",
   "erreurAjout": "Error while adding the game.",
   "nom": "name",
