@@ -4,9 +4,12 @@
   "erreurNote": "The grade is not between 0 and 20",
   "erreurSave": "Error while saving :",
   "erreurAjout": "Error while adding the game.",
+  "erreurModification" : "Error while modifying",
   "nom": "name",
   "note": "grade",
   "termine": "finished?",
+  "end": "ended",
+  "descriptionFalc": "Description (facultative)",
   "ajout": "game successfully added",
   "titreAjout": "Game addition",
   "texteAjout": "Add",
@@ -16,5 +19,8 @@
   "noteJeuHint": "Between 0 and 20",
   "oui": "yes",
   "non": "no",
-  "labeltermine": "Clear ?"
+  "labeltermine": "Clear ?",
+  "modifierTitre": "Modify the game",
+  "enregistrer" : "Apply the modifications"
+
 }

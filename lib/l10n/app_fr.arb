@@ -4,9 +4,12 @@
   "erreurNote": "La note n'est pas entre 0 et 20",
   "erreurSave": "Erreur lors de la sauvegarde :",
   "erreurAjout": "Erreur lors de l'ajout du jeu.",
+  "erreurModification" : "Erreur lors de la modification ",
   "nom": "nom",
   "note": "note",
   "termine": "terminé?",
+  "end": "terminé",
+  "descriptionFalc": "Description (facultatif)",
   "ajout": "jeu ajouté avec succès",
   "titreAjout": "Ajout de jeu",
   "texteAjout": "Ajouter",
@@ -16,5 +19,8 @@
   "noteJeuHint": "Entre 0 et 20",
   "oui": "oui",
   "non": "non",
-  "labeltermine": "Terminé ?"
+  "labeltermine": "Terminé ?",
+  "modifierTitre": "Modifier le jeu",
+  "enregistrer" : "Enregistrer les modifications"
+
 }

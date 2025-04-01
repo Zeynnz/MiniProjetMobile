@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:csv/csv.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class ModifierJeu extends StatefulWidget {
   final int index;
@@ -62,7 +63,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
 
       Navigator.pop(context, true);
     } catch (e) {
-      print("Erreur lors de la modification : $e");
+      print(AppLocalizations.of(context)!.erreurModification);
     }
   }
 
@@ -72,7 +73,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.black87, // Fond sombre
       appBar: AppBar(
-        title: Text("Modifier le jeu"),
+        title: Text(AppLocalizations.of(context)!.modifierTitre),
         backgroundColor: Colors.teal,
       ),
       body: Padding(
@@ -84,7 +85,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
               controller: _nomController,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
-                labelText: "Nom du jeu",
+                labelText: AppLocalizations.of(context)!.nomJeu,
                 labelStyle: TextStyle(color: Colors.white70),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -100,7 +101,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
               keyboardType: TextInputType.number,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
-                labelText: "Note",
+                labelText: AppLocalizations.of(context)!.noteJeu,
                 labelStyle: TextStyle(color: Colors.white70),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -112,7 +113,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
             ),
             SizedBox(height: 16),
             SwitchListTile(
-              title: Text("Terminé", style: TextStyle(color: Colors.white)),
+              title: Text(AppLocalizations.of(context)!.end, style: TextStyle(color: Colors.white)),
               value: _fini ?? false,
               onChanged: (value) {
                 setState(() {
@@ -127,7 +128,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
               maxLines: 3,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
-                labelText: "Description (facultatif)",
+                labelText: AppLocalizations.of(context)!.descriptionFalc,
                 labelStyle: TextStyle(color: Colors.white70),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
@@ -146,7 +147,7 @@ class _ModifierJeuState extends State<ModifierJeu> {
                   padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
                 child: Text(
-                  "Enregistrer les modifications",
+                  AppLocalizations.of(context)!.enregistrer,
                   style: TextStyle(color: Colors.white),
                 ),
               ),
