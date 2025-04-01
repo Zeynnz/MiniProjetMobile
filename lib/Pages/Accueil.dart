@@ -54,6 +54,41 @@ class _AccueilState extends State<Accueil> {
     }
   }
 
+  Future<void> SupprimerJeu(int index) async {
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/jeux.csv';
+      final file = File(filePath);
+
+      if (!file.existsSync()) return; // Vérifie si le fichier existe
+
+      String fileContent = await file.readAsString();
+      List<List<dynamic>> jeuxList = const CsvToListConverter().convert(fileContent);
+
+      // Vérifier si l'index est valide avant de supprimer
+      if (index < 0 || index >= jeuxList.length) return;
+
+      jeuxList.removeAt(index); // Supprime l'élément à l'index donné
+
+      // Réécriture du fichier sans l’élément supprimé
+      String csvData = const ListToCsvConverter().convert(jeuxList);
+      await file.writeAsString(csvData, flush: true);
+
+      // Mettre à jour l'affichage
+      setState(() {
+        jeux = jeuxList;
+      });
+
+      // Afficher un message de confirmation
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Jeu supprimé avec succès !")),
+      );
+    } catch (e) {
+      print("Erreur lors de la suppression : $e");
+    }
+  }
+
+
   Color getColorByNote(double note){
     if(note <= 4){
       return Colors.red;
@@ -139,6 +174,38 @@ class _AccueilState extends State<Accueil> {
               child: ListTile(
                 title: Text(jeu[0] ?? "Nom inconnu"),  // Affiche le nom du jeu
                 subtitle: Text('Note: ${jeu[1]}, Terminé: ${termine ? 'Oui' : 'Non'}'),
+                onLongPress: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                        padding: EdgeInsets.all(16.0),
+                        child: Wrap(
+                          children: [
+                            ListTile(
+                              leading: Icon(Icons.edit),
+                              title: Text('Modifier'),
+                              onTap: () {
+                                Navigator.pop(context); // Fermer le menu
+                                // Ajouter la logique pour modifier l'élément ici
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.delete),
+                              title: Text('Supprimer'),
+                              onTap: () {
+                                SupprimerJeu(index); // Supprime le jeu sélectionné
+                                Navigator.pop(context); // Ferme le menu
+                              },
+
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+
               ),
             );
           },
