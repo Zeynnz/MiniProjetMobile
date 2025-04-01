@@ -26,8 +26,7 @@
   "labeltermine": "Terminé ?",
   "supprimer": "Supprimer",
   "modifier": "Modifier",
-  "labeltermine": "Terminé ?",
   "modifierTitre": "Modifier le jeu",
-  "enregistrer" : "Enregistrer les modifications"
-
+  "enregistrer" : "Enregistrer les modifications",
+  "detailGame": "Détails du jeu"
 }

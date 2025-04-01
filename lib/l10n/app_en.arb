@@ -23,10 +23,10 @@
   "noteJeuHint": "Between 0 and 20",
   "oui": "yes",
   "non": "no",
-  "labeltermine": "Clear ?",
   "modifierTitre": "Modify the game",
   "enregistrer" : "Apply the modifications",
   "labeltermine": "Clear ?",
   "supprimer": "Delete",
-  "modifier": "Update"
+  "modifier": "Update",
+  "detailGame": "Details of the Game"
 }

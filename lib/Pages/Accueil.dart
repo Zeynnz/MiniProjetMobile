@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:GameStar/Pages/Ajout.dart';
 import 'package:GameStar/Pages/Apropos.dart';
+import 'package:GameStar/Pages/DetailJeu.dart';
 import 'package:GameStar/Pages/ModifierJeu.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
@@ -130,10 +131,8 @@ class _AccueilState extends State<Accueil> {
             PopupMenuItem(
               value: 1,
               child: Text(AppLocalizations.of(context)!.aboutUs),
-            ),
-            PopupMenuItem(
-                value: 2,
-                child: Text("Je sais pas encore"))
+            )
+
           ],
           onSelected: (value) {
             if (value == 1) {
@@ -182,7 +181,26 @@ class _AccueilState extends State<Accueil> {
                       return Container(
                         padding: EdgeInsets.all(16.0),
                         child: Wrap(
-                          children: [
+                          children: [ListTile(
+                            leading: Icon(Icons.abc),
+                            title: Text("Details"),
+                            onTap: () async {
+                              Navigator.pop(context); // Ferme le menu contextuel
+
+                              // Envoi des données à la page DetailJeu
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Detailjeu(
+                                    nom: jeu[0], // Nom du jeu
+                                    note: jeu[1], // Note du jeu
+                                    termine: jeu[2].toString().toLowerCase() == 'true', // Statut terminé
+                                    description: jeu.length > 3 ? jeu[3] : "", // Description (si présente)
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                             ListTile(
                               leading: Icon(Icons.edit),
                               title: Text(AppLocalizations.of(context)!.modifier),
