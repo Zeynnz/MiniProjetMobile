@@ -4,10 +4,14 @@
   "erreurNote": "The grade is not between 0 and 20",
   "erreurSave": "Error while saving :",
   "erreurAjout": "Error while adding the game.",
+  "erreurRecup": "Error while obtaining the game",
+  "fichierInexistant": "File does not exist",
   "erreurModification" : "Error while modifying",
   "nom": "name",
   "note": "grade",
+  "note2": "Grade:",
   "termine": "finished?",
+  "termine2": "Finished:",
   "end": "ended",
   "descriptionFalc": "Description (facultative)",
   "ajout": "game successfully added",
@@ -21,6 +25,8 @@
   "non": "no",
   "labeltermine": "Clear ?",
   "modifierTitre": "Modify the game",
-  "enregistrer" : "Apply the modifications"
-
+  "enregistrer" : "Apply the modifications",
+  "labeltermine": "Clear ?",
+  "supprimer": "Delete",
+  "modifier": "Update"
 }

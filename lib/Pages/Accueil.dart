@@ -28,7 +28,7 @@ class _AccueilState extends State<Accueil> {
 
       // Vérifier si le fichier existe
       if (!file.existsSync()) {
-        print("Le fichier n'existe pas");
+        print(AppLocalizations.of(context)!.fichierInexistant);
         setState(() {
           jeux = [];  // Si le fichier n'existe pas, on retourne une liste vide
         });
@@ -48,7 +48,7 @@ class _AccueilState extends State<Accueil> {
         }).toList(); // Mettre à jour l'état avec les jeux récupérés
       });
     } catch (e) {
-      print("Erreur lors de la récupération des jeux : $e");
+      print('${AppLocalizations.of(context)!.erreurRecup} : $e');
       setState(() {
         jeux = [];  // En cas d'erreur, retourner une liste vide
       });
@@ -174,7 +174,7 @@ class _AccueilState extends State<Accueil> {
               color: cardColor,
               child: ListTile(
                 title: Text(jeu[0] ?? "Nom inconnu"),  // Affiche le nom du jeu
-                subtitle: Text('Note: ${jeu[1]}, Terminé: ${termine ? 'Oui' : 'Non'}'),
+                subtitle: Text('${AppLocalizations.of(context)!.note2} ${jeu[1]}, ${AppLocalizations.of(context)!.termine2} ${termine ? AppLocalizations.of(context)!.oui : AppLocalizations.of(context)!.non}'),
                 onLongPress: () {
                   showModalBottomSheet(
                     context: context,
@@ -185,7 +185,7 @@ class _AccueilState extends State<Accueil> {
                           children: [
                             ListTile(
                               leading: Icon(Icons.edit),
-                              title: Text('Modifier'),
+                              title: Text(AppLocalizations.of(context)!.modifier),
                               onTap: () async {
                                 Navigator.pop(context); // Fermer le menu
                                 bool shouldRefresh = await Navigator.push(
@@ -209,7 +209,7 @@ class _AccueilState extends State<Accueil> {
                             ),
                             ListTile(
                               leading: Icon(Icons.delete),
-                              title: Text('Supprimer'),
+                              title: Text(AppLocalizations.of(context)!.supprimer),
                               onTap: () {
                                 SupprimerJeu(index); // Supprime le jeu sélectionné
                                 Navigator.pop(context); // Ferme le menu
