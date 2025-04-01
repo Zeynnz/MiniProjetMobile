@@ -39,9 +39,6 @@ class _AjoutState extends State<Ajout> {
         String existingContent = await file.readAsString();
         List<List<dynamic>> existingRows = const CsvToListConverter().convert(existingContent);
         lignes.addAll(existingRows);
-      } else {
-        // Ajouter l'en-tête seulement si le fichier n'existe pas encore
-        lignes.add([AppLocalizations.of(context)!.nom, AppLocalizations.of(context)!.note, AppLocalizations.of(context)!.termine]);
       }
 
       // Ajouter la nouvelle ligne

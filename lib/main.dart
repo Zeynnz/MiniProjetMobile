@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Game Star',//j'ai pas d'idée donc c'est temporaire
+        title: 'Game Star',
         theme: ThemeData(
           primarySwatch: Colors.green,
           appBarTheme: const AppBarTheme(
