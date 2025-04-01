@@ -55,14 +55,20 @@ class _AccueilState extends State<Accueil> {
   }
 
   Color getColorByNote(double note){
-    if(note <= 8){
+    if(note <= 4){
       return Colors.red;
-    }else if (note >8 && note <= 12){
+    }else if (note>4 && note <= 6){
       return Colors.deepOrange;
-    }else if (note>12 && note <= 16){
+    }else if (note >6 && note <= 8){
+      return Color(0xFFFF7A55);
+    }else if (note>8 && note <= 10){
+      return Colors.orangeAccent;
+    }else if (note>10 && note <= 12){
       return Colors.lightGreenAccent;
-    }else if (note>16 && note <20){
+    }else if (note>12 && note <= 16){
       return Colors.lightGreen;
+    }else if (note>16 && note <20){
+      return Color(0xFF66BB6A);
     }else if (note == 20){
       return Colors.green;
     }else {
