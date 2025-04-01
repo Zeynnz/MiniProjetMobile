@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:GameStar/Pages/Ajout.dart';
 import 'package:GameStar/Pages/Apropos.dart';
+import 'package:GameStar/Pages/ModifierJeu.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -179,10 +180,26 @@ class _AccueilState extends State<Accueil> {
                             ListTile(
                               leading: Icon(Icons.edit),
                               title: Text('Modifier'),
-                              onTap: () {
+                              onTap: () async {
                                 Navigator.pop(context); // Fermer le menu
-                                // Ajouter la logique pour modifier l'élément ici
+                                bool shouldRefresh = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ModifierJeu(
+                                      index: index,
+                                      nom: jeu[0],
+                                      note: jeu[1],
+                                      termine: jeu[2].toString().toLowerCase() == 'true',
+                                      description: jeu.length > 3 ? jeu[3] : "", // Vérifier si la description existe
+                                    ),
+                                  ),
+                                ) ?? false;
+
+                                if (shouldRefresh) {
+                                  recupererJeux(); // Rafraîchir la liste après modification
+                                }
                               },
+
                             ),
                             ListTile(
                               leading: Icon(Icons.delete),
