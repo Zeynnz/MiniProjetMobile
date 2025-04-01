@@ -27,6 +27,13 @@ class _AjoutState extends State<Ajout> {
       return;
     }
 
+    if(note>20 || note<0){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.erreurNote)),
+      );
+      return;
+    }
+
     try {
       final directory = await getApplicationDocumentsDirectory();
       final filePath = '${directory.path}/jeux.csv';
