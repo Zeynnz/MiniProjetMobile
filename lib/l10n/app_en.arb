@@ -28,5 +28,7 @@
   "labeltermine": "Clear ?",
   "supprimer": "Delete",
   "modifier": "Update",
-  "detailGame": "Details of the Game"
+  "detailGame": "Details of the Game",
+  "details": "Details",
+  "nomInconnu": "Unknown name"
 }

@@ -80,34 +80,36 @@ class _AjoutState extends State<Ajout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.titreAjout)),
-      body: Center(child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            saisie(
-              poidsController: _nomController,
-              tailleController: _noteController,
-              ended: _fini,
-              onEndedChanged: (bool? value) {
-                setState(() {
-                  _fini = value; // Mettre à jour l'état du radio bouton
-                });
-              },
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              saisie(
+                nomController: _nomController,
+                noteController: _noteController,
+                ended: _fini,
+                onEndedChanged: (bool? value) {
+                  setState(() {
+                    _fini = value;
+                  });
+                },
               ),
-              onPressed: ajouterJeu,
-              child: Text(
-                AppLocalizations.of(context)!.texteAjout,
-                style: const TextStyle(fontSize: 20.0),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                onPressed: ajouterJeu,
+                child: Text(
+                  AppLocalizations.of(context)!.texteAjout,
+                  style: const TextStyle(fontSize: 20.0),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),)
+      ),
     );
   }
 }

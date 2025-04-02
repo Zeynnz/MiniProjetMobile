@@ -10,7 +10,7 @@
   "nom": "nom",
   "note": "note",
   "note2": "Note:",
-  "termine": "terminé?",
+  "te rmine": "terminé?",
   "end": "terminé",
   "descriptionFalc": "Description (facultatif)",
   "termine2": "Terminé:",
@@ -28,5 +28,7 @@
   "modifier": "Modifier",
   "modifierTitre": "Modifier le jeu",
   "enregistrer" : "Enregistrer les modifications",
-  "detailGame": "Détails du jeu"
+  "detailGame": "Détails du jeu",
+  "details": "Détails",
+  "nomInconnu": "Nom inconnu"
 }

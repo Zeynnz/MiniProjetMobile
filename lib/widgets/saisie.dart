@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class saisie extends StatelessWidget {
-  final TextEditingController poidsController;
-  final TextEditingController tailleController;
+  final TextEditingController nomController;
+  final TextEditingController noteController;
   final bool? ended;
   final ValueChanged<bool?> onEndedChanged;
 
   const saisie({
     super.key,
-    required this.poidsController,
-    required this.tailleController,
+    required this.nomController,
+    required this.noteController,
     required this.ended,
     required this.onEndedChanged,
   });
@@ -25,7 +25,7 @@ class saisie extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextField(
-              controller: poidsController,
+              controller: nomController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 labelText: AppLocalizations.of(context)!.nomJeu,
@@ -35,7 +35,7 @@ class saisie extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: tailleController,
+              controller: noteController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: AppLocalizations.of(context)!.noteJeu,

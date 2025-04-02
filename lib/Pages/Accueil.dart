@@ -1,13 +1,12 @@
 import 'dart:io';
-
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:csv/csv.dart';
 import 'package:GameStar/Pages/Ajout.dart';
 import 'package:GameStar/Pages/Apropos.dart';
 import 'package:GameStar/Pages/DetailJeu.dart';
 import 'package:GameStar/Pages/ModifierJeu.dart';
-import 'package:csv/csv.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:path_provider/path_provider.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
@@ -17,45 +16,36 @@ class Accueil extends StatefulWidget {
 }
 
 class _AccueilState extends State<Accueil> {
-  // Variable pour stocker les jeux
   List<List<dynamic>> jeux = [];
 
-  // Méthode pour récupérer les jeux
   Future<void> recupererJeux() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
       final filePath = '${directory.path}/jeux.csv';
       final file = File(filePath);
 
-      // Vérifier si le fichier existe
       if (!file.existsSync()) {
-        print(AppLocalizations.of(context)!.fichierInexistant);
         setState(() {
-          jeux = [];  // Si le fichier n'existe pas, on retourne une liste vide
+          jeux = [];
         });
         return;
       }
 
-      // Lire le contenu du fichier
       String fileContent = await file.readAsString();
-
-      // Convertir le contenu du fichier CSV en liste
       List<List<dynamic>> jeuxList = const CsvToListConverter().convert(fileContent);
 
       setState(() {
         jeux = jeuxList.map((jeu) {
-          jeu[1] = double.tryParse(jeu[1].toString()) ?? 0.0;  // Convertir la note en double, sinon 0.0
+          jeu[1] = double.tryParse(jeu[1].toString()) ?? 0.0;
           return jeu;
-        }).toList(); // Mettre à jour l'état avec les jeux récupérés
+        }).toList();
       });
     } catch (e) {
-      print('${AppLocalizations.of(context)!.erreurRecup} : $e');
       setState(() {
-        jeux = [];  // En cas d'erreur, retourner une liste vide
+        jeux = [];
       });
     }
   }
-
   Future<void> SupprimerJeu(int index) async {
     try {
       final directory = await getApplicationDocumentsDirectory();
@@ -90,39 +80,32 @@ class _AccueilState extends State<Accueil> {
     }
   }
 
-
-  Color getColorByNote(double note){
-    if(note <= 4){
-      return Colors.red;
-    }else if (note>4 && note <= 6){
-      return Colors.deepOrange;
-    }else if (note >6 && note <= 8){
-      return Color(0xFFFF7A55);
-    }else if (note>8 && note <= 10){
-      return Colors.orangeAccent;
-    }else if (note>10 && note <= 12){
-      return Colors.lightGreenAccent;
-    }else if (note>12 && note <= 16){
-      return Colors.lightGreen;
-    }else if (note>16 && note <20){
-      return Color(0xFF66BB6A);
-    }else if (note == 20){
-      return Colors.green;
-    }else {
-      return Colors.white;
-    }
+  Color getColorByNote(double note) {
+    if (note <= 4) return Colors.red;
+    if (note <= 6) return Colors.deepOrange;
+    if (note <= 8) return Color(0xFFFF7A55);
+    if (note <= 10) return Colors.orangeAccent;
+    if (note <= 12) return Colors.lightGreenAccent;
+    if (note <= 16) return Colors.lightGreen;
+    if (note < 20) return Color(0xFF66BB6A);
+    return Colors.green;
   }
 
   @override
   void initState() {
     super.initState();
-    recupererJeux();  // Appel de la méthode pour récupérer les jeux dès que l'écran est créé
+    recupererJeux();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
+    bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    List<List<dynamic>> lowNotes = jeux.where((jeu) => (jeu[1] ?? 0.0) <= 10).toList();
+    List<List<dynamic>> highNotes = jeux.where((jeu) => (jeu[1] ?? 0.0) > 10).toList();
+
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Center(child: Text("Game Star")),
         leading: PopupMenuButton<int>(
@@ -132,7 +115,6 @@ class _AccueilState extends State<Accueil> {
               value: 1,
               child: Text(AppLocalizations.of(context)!.aboutUs),
             )
-
           ],
           onSelected: (value) {
             if (value == 1) {
@@ -143,108 +125,115 @@ class _AccueilState extends State<Accueil> {
         actions: [
           IconButton(
             onPressed: () async {
-              // Naviguer vers la page d'ajout et attendre un résultat
               bool shouldRefresh = await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Ajout()),
-              ) ?? false;
-
-              // Si le jeu a été ajouté, on rafraîchit la liste
-              if (shouldRefresh) {
-                recupererJeux();
-              }
+              ) ??
+                  false;
+              if (shouldRefresh) recupererJeux();
             },
             icon: Icon(Icons.add),
           )
         ],
       ),
-      body: Center(
-        child: jeux.isEmpty
-            ? const CircularProgressIndicator() // Affiche un indicateur de chargement si la liste est vide
-            : ListView.builder(
-          itemCount: jeux.length,
-          itemBuilder: (context, index) {
-            var jeu = jeux[index];
-            double note = jeu[1] ?? 0.0;
-            bool termine = jeu[2].toString().toLowerCase() == 'true';  // Conversion de la chaîne en booléen
-            Color cardColor = getColorByNote(note);
+      body: jeux.isEmpty
+          ? Center(child: CircularProgressIndicator())
+          : isPortrait
+          ? ListView.builder(
+        itemCount: jeux.length,
+        itemBuilder: (context, index) => buildGameCard(jeux[index]),
+      )
+          : Row(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: lowNotes.length,
+              itemBuilder: (context, index) => buildGameCard(lowNotes[index]),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: highNotes.length,
+              itemBuilder: (context, index) => buildGameCard(highNotes[index]),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-            return Card(
-              color: cardColor,
-              child: ListTile(
-                title: Text(jeu[0] ?? "Nom inconnu"),  // Affiche le nom du jeu
-                subtitle: Text('${AppLocalizations.of(context)!.note2} ${jeu[1]}, ${AppLocalizations.of(context)!.termine2} ${termine ? AppLocalizations.of(context)!.oui : AppLocalizations.of(context)!.non}'),
-                onLongPress: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Container(
-                        padding: EdgeInsets.all(16.0),
-                        child: Wrap(
-                          children: [ListTile(
-                            leading: Icon(Icons.abc),
-                            title: Text("Details"),
-                            onTap: () async {
-                              Navigator.pop(context); // Ferme le menu contextuel
+  Widget buildGameCard(List<dynamic> jeu) {
+    double note = jeu[1] ?? 0.0;
+    bool termine = jeu[2].toString().toLowerCase() == 'true';
+    Color cardColor = getColorByNote(note);
 
-                              // Envoi des données à la page DetailJeu
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Detailjeu(
-                                    nom: jeu[0], // Nom du jeu
-                                    note: jeu[1], // Note du jeu
-                                    termine: jeu[2].toString().toLowerCase() == 'true', // Statut terminé
-                                    description: jeu.length > 3 ? jeu[3] : "", // Description (si présente)
-                                  ),
-                                ),
-                              );
-                            },
+    return Card(
+      color: cardColor,
+      child: ListTile(
+        title: Text(jeu[0] ?? AppLocalizations.of(context)!.nomInconnu),
+        subtitle: Text('${AppLocalizations.of(context)!.note2} ${jeu[1]}, ${AppLocalizations.of(context)!.termine2} ${termine ? AppLocalizations.of(context)!.oui : AppLocalizations.of(context)!.non}'),
+        onLongPress: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                padding: EdgeInsets.all(16.0),
+                child: Wrap(
+                  children: [
+                    ListTile(
+                      leading: Icon(Icons.abc),
+                      title: Text(AppLocalizations.of(context)!.details),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Detailjeu(
+                              nom: jeu[0],
+                              note: jeu[1],
+                              termine: jeu[2].toString().toLowerCase() == 'true',
+                              description: jeu.length > 3 ? jeu[3] : "",
+                            ),
                           ),
-                            ListTile(
-                              leading: Icon(Icons.edit),
-                              title: Text(AppLocalizations.of(context)!.modifier),
-                              onTap: () async {
-                                Navigator.pop(context); // Fermer le menu
-                                bool shouldRefresh = await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ModifierJeu(
-                                      index: index,
-                                      nom: jeu[0],
-                                      note: jeu[1],
-                                      termine: jeu[2].toString().toLowerCase() == 'true',
-                                      description: jeu.length > 3 ? jeu[3] : "", // Vérifier si la description existe
-                                    ),
-                                  ),
-                                ) ?? false;
-
-                                if (shouldRefresh) {
-                                  recupererJeux(); // Rafraîchir la liste après modification
-                                }
-                              },
-
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.edit),
+                      title: Text(AppLocalizations.of(context)!.modifier),
+                      onTap: () async {
+                        Navigator.pop(context);
+                        bool shouldRefresh = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ModifierJeu(
+                              index: jeux.indexOf(jeu),
+                              nom: jeu[0],
+                              note: jeu[1],
+                              termine: jeu[2].toString().toLowerCase() == 'true',
+                              description: jeu.length > 3 ? jeu[3] : "",
                             ),
-                            ListTile(
-                              leading: Icon(Icons.delete),
-                              title: Text(AppLocalizations.of(context)!.supprimer),
-                              onTap: () {
-                                SupprimerJeu(index); // Supprime le jeu sélectionné
-                                Navigator.pop(context); // Ferme le menu
-                              },
+                          ),
+                        ) ??
+                            false;
+                        if (shouldRefresh) recupererJeux();
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.delete),
+                      title: Text(AppLocalizations.of(context)!.supprimer),
+                      onTap: () {
+                        SupprimerJeu(jeux.indexOf(jeu)); // Supprime le jeu sélectionné
+                        Navigator.pop(context); // Ferme le menu
+                      },
 
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
-
-              ),
-            );
-          },
-        ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
