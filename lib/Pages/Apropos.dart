@@ -11,7 +11,7 @@ class Apropos extends StatelessWidget {
       body: Center(
         child: Text(
           "Coiffet Mathéo, Eliott Née-Chirol",
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
     );
