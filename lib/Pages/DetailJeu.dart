@@ -22,7 +22,7 @@ class Detailjeu extends StatelessWidget {
         title: Text(AppLocalizations.of(context)!.detailGame),
         backgroundColor: Colors.teal,
       ),
-      body: Padding(
+      body: SingleChildScrollView(child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class Detailjeu extends StatelessWidget {
           ],
         ),
       ),
-    );
+      ));
   }
 
   Widget _buildInfoRow(String label, String value) {

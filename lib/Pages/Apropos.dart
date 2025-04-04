@@ -8,12 +8,12 @@ class Apropos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.aboutUs)),
-      body: Center(
+      body: SingleChildScrollView(child: Center(
         child: Padding(padding: EdgeInsets.all(16.0),child:Text(
           AppLocalizations.of(context)!.apropros,
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),)
       ),
-    );
+      ),);
   }
 }
