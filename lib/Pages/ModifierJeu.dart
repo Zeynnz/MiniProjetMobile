@@ -71,7 +71,6 @@ class _ModifierJeuState extends State<ModifierJeu> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black87, // Fond sombre
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.modifierTitre),
         backgroundColor: Colors.teal,

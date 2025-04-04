@@ -11,7 +11,7 @@
   "note": "note",
   "note2": "Note:",
   "te rmine": "terminé?",
-  "end": "terminé",
+  "end": "Terminé",
   "descriptionFalc": "Description (facultatif)",
   "termine2": "Terminé:",
   "ajout": "jeu ajouté avec succès",
@@ -30,5 +30,8 @@
   "enregistrer" : "Enregistrer les modifications",
   "detailGame": "Détails du jeu",
   "details": "Détails",
-  "nomInconnu": "Nom inconnu"
+  "nomInconnu": "Nom inconnu",
+  "apropros" : "Bienvenue sur GameStar, developpée par Coiffet Mathéo et Eliott Née-Chirol",
+  "aide": "Ce choix est pour préciser si le jeu à été terminé"
+
 }

@@ -12,7 +12,7 @@
   "note2": "Grade:",
   "termine": "finished?",
   "termine2": "Finished:",
-  "end": "ended",
+  "end": "Ended",
   "descriptionFalc": "Description (facultative)",
   "ajout": "game successfully added",
   "titreAjout": "Game addition",
@@ -30,5 +30,7 @@
   "modifier": "Update",
   "detailGame": "Details of the Game",
   "details": "Details",
-  "nomInconnu": "Unknown name"
+  "nomInconnu": "Unknown name",
+  "apropros" : "Welcome to GameStar, developped by Coiffet Mathéo and Eliott Née-Chirol",
+  "aide": "This choice is for if you have endend the game"
 }

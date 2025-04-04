@@ -15,6 +15,8 @@ class saisie extends StatelessWidget {
     required this.onEndedChanged,
   });
 
+
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -44,11 +46,16 @@ class saisie extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
+            Tooltip(message:AppLocalizations.of(context)!.aide
+              ,child:
             Text( AppLocalizations.of(context)!.labeltermine,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 18,
               ),),
+              waitDuration: Duration(milliseconds: 500),
+              showDuration: Duration(seconds: 2),
+            ),
             Row(
               children: <Widget>[
                 Expanded(

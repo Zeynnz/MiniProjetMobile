@@ -98,12 +98,13 @@ class _AjoutState extends State<Ajout> {
               const SizedBox(height: 24),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
                   minimumSize: const Size(double.infinity, 50),
                 ),
                 onPressed: ajouterJeu,
                 child: Text(
                   AppLocalizations.of(context)!.texteAjout,
-                  style: const TextStyle(fontSize: 20.0),
+                  style: const TextStyle(fontSize: 20.0,color: Colors.black),
                 ),
               ),
             ],

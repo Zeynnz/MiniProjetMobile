@@ -1,11 +1,8 @@
-# miniprojetmobile
+#
+Game Star
 
-Accueil : liste triable des jeux ajoutés
-Ajout d'un jeu, commentaires, note, etc
-Modification des infos notés
 
 Backlog de jeux à faire
+Quand maintiens du texte "Terminé ?" (Clear ?), un tooltip d'aide apparaît 
+si les informations ne sont pas claires
 
-
-#
-A new Flutter project.

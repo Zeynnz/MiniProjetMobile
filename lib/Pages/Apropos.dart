@@ -9,10 +9,10 @@ class Apropos extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.aboutUs)),
       body: Center(
-        child: Text(
-          "Coiffet Mathéo, Eliott Née-Chirol",
+        child: Padding(padding: EdgeInsets.all(16.0),child:Text(
+          AppLocalizations.of(context)!.apropros,
           style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
+        ),)
       ),
     );
   }
