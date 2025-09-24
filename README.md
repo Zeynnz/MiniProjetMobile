@@ -1,7 +1,7 @@
 #
 Game Star
 
-Temps de développement : environ 2 semaines \n
+Temps de développement : environ 2 semaines
 Langage utilisé : Essentiellement Dart \n
 Projet réalisé en duo : Eliott Née-Chirol et Coiffet Mathéo
 
