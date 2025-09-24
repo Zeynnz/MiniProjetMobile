@@ -1,8 +1,10 @@
 #
 Game Star
 
-Temps de développement : environ 2 semaines
+Temps de développement : environ 2 semaines \n
+Langage utilisé : Essentiellement Dart \n
 Projet réalisé en duo : Eliott Née-Chirol et Coiffet Mathéo
+
 
 Application mobile simple permetant de se créer une liste de jeux, mais fait potentiellement être utilisé pour des séries, films, etc
 
