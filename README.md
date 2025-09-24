@@ -1,8 +1,9 @@
 #
 Game Star
 
+Temps de développement : environ 2 semaines
+Projet réalisé en duo : Eliott Née-Chirol et Coiffet Mathéo
 
-Backlog de jeux à faire
-Quand maintiens du texte "Terminé ?" (Clear ?), un tooltip d'aide apparaît 
-si les informations ne sont pas claires
+Application mobile simple permetant de se créer une liste de jeux, mais fait potentiellement être utilisé pour des séries, films, etc
 
+L'application permet d'ajouté de nouveaux éléments, y donner une note personnelle et d'y ajouter une description/un commentaire.
